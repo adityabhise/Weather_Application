@@ -1,7 +1,6 @@
 let weather = {
-  apiKey: "67b92f0af5416edbfe58458f502b0a31", // Authentication , Rate limiting
+  apiKey: "67b92f0af5416edbfe58458f502b0a31",
 
-  // step 2
   fetchWeather: function (city) {
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -19,13 +18,12 @@ let weather = {
       .then((data) => this.displayWeather(data));
   },
 
-  // step 3
   displayWeather: function (data) {
     const { name } = data;
     const { icon, description } = data.weather[0];
     const { temp, humidity } = data.main;
     const { speed } = data.wind;
-    // This uses object destructuring to extract the speed property from the wind object inside the data object.
+
     document.querySelector(".city").innerText = "Weather in " + name;
     document.querySelector(".description").innerText = description;
 
@@ -51,12 +49,10 @@ let weather = {
   },
 };
 
-// step1
 document.querySelector(".search button").addEventListener("click", function () {
   weather.search();
 });
 
-// step 1
 document
   .querySelector(".search-bar")
   .addEventListener("keyup", function (event) {
@@ -65,4 +61,4 @@ document
     }
   });
 
-weather.fetchWeather("Pune");
+weather.fetchWeather("Nagpur");
